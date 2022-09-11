@@ -16,19 +16,19 @@ public class DoofusMovement : MonoBehaviour
 
     void Update()
     {
+        if (!diaryComponent.DiaryFound("DoofusMovement")) return;
+
         var move = new Vector3(
             Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")
         );
 
-        if (diaryComponent.diaryData == null)
+        // Keep character controller activated for gravity to work.
+        controller.SimpleMove(Vector3.forward * 0);
+
+        if (move != Vector3.zero)
         {
-            Debug.Log("No data in diary found! DoofusMovement component is waiting...");
-            return;
+            var speed = diaryComponent.diaryData.playerData.speed;
+            controller.Move(move * Time.deltaTime * speed);
         }
-
-        var speed = diaryComponent.diaryData.playerData.speed;
-        // Debug.Log(string.Format("Found speed property with value {0}", speed));
-
-        controller.Move(move * Time.deltaTime * speed);
     }
 }

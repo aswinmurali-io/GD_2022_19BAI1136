@@ -35,7 +35,7 @@ public class DoofusDiary : MonoBehaviour
                 var jsonString = request.downloadHandler.text;
 
                 var debugString = String.Format(
-                    "Received json {0} from {1}", jsonString, url
+                    "Received doofus diary json {0} from {1}", jsonString, url
                 );
 
                 Debug.Log(debugString);
