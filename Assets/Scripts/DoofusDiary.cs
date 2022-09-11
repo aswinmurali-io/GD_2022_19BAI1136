@@ -1,28 +1,30 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
+using Newtonsoft.Json;
 
 using UnityEngine;
 using UnityEngine.Networking;
-
-[Serializable]
-class DoofusDiaryData { }
-
 
 public class DoofusDiary : MonoBehaviour
 {
 
     private string url = "https://s3.ap-south-1.amazonaws.com/superstars.assetbundles.testbuild/doofus_game/doofus_diary.json";
 
+    private DoofusDiaryDataComponent diaryComponent;
+
     void Start()
     {
-        StartCoroutine(GetDiaryData());
+        Debug.Log("Getting Doofus diary data from server...");
+        StartCoroutine(GetDataFromServer());
+        diaryComponent = GetComponent<DoofusDiaryDataComponent>();
     }
 
-    IEnumerator<DoofusDiaryData> GetDiaryData()
+    // DoofusDiaryData
+    IEnumerator GetDataFromServer()
     {
-        using (var request = UnityWebRequest.Get("http://www.my-server.com"))
+        using (var request = UnityWebRequest.Get(url))
         {
-            request.SendWebRequest();
+            yield return request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.ConnectionError)
             {
@@ -30,10 +32,19 @@ public class DoofusDiary : MonoBehaviour
             }
             else
             {
-                // Show results as text
                 var jsonString = request.downloadHandler.text;
 
-                yield return JsonUtility.FromJson<DoofusDiaryData>(jsonString);
+                var debugString = String.Format(
+                    "Received json {0} from {1}", jsonString, url
+                );
+
+                Debug.Log(debugString);
+
+                var diaryData = JsonConvert.DeserializeObject<DoofusDiaryData>(jsonString);
+
+                diaryComponent.diaryData = diaryData;
+
+                Debug.Log(diaryData);
             }
         }
     }

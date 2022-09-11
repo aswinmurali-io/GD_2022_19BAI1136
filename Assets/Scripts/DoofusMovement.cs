@@ -2,27 +2,33 @@ using UnityEngine;
 
 public class DoofusMovement : MonoBehaviour
 {
-    private Rigidbody rigidBody;
+    private CharacterController controller;
 
-    public int speed = 3;
+    public GameObject gameSystem;
+
+    private DoofusDiaryDataComponent diaryComponent;
 
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody>();
+        controller = gameObject.AddComponent<CharacterController>();
+        diaryComponent = gameSystem.GetComponent<DoofusDiaryDataComponent>();
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
-            rigidBody.AddForce(Vector3.left * speed);
+        var move = new Vector3(
+            Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")
+        );
 
-        if (Input.GetKey(KeyCode.D))
-            rigidBody.AddForce(Vector3.right * speed);
+        if (diaryComponent.diaryData == null)
+        {
+            Debug.Log("No data in diary found! DoofusMovement component is waiting...");
+            return;
+        }
 
-        if (Input.GetKey(KeyCode.W))
-            rigidBody.AddForce(Vector3.back * speed);
+        var speed = diaryComponent.diaryData.playerData.speed;
+        // Debug.Log(string.Format("Found speed property with value {0}", speed));
 
-        if (Input.GetKey(KeyCode.S))
-            rigidBody.AddForce(Vector3.forward * speed);
+        controller.Move(move * Time.deltaTime * speed);
     }
 }
