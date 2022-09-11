@@ -2,24 +2,44 @@ using UnityEngine;
 
 public class PulpitsSpawningGameSystem : MonoBehaviour
 {
-    void Start()
-    {
+    public GameObject pulpit;
 
+    public DoofusDiaryDataComponent diaryComponent;
+
+    private bool updateLock = false;
+
+    void Spawn()
+    {
+        var pulpitGameObjects = GameObject.FindGameObjectsWithTag("Pulpits");
+
+        if (pulpitGameObjects.Length == 1)
+        {
+            var lastPulpitObject = pulpitGameObjects[pulpitGameObjects.Length - 1];
+
+            var newPulpit = Instantiate(
+                pulpit, lastPulpitObject.transform.position, Quaternion.identity
+            );
+            newPulpit.SetActive(true);
+
+            var spawnPoints = lastPulpitObject.GetComponent<PulpitsSpawnPoints>().newsPoints;
+
+            var random = new System.Random();
+            var pickedPointIndex = random.Next(spawnPoints.Length);
+
+            pulpit.transform.position = spawnPoints[pickedPointIndex].transform.position;
+        }
     }
 
     void Update()
     {
+        if (!diaryComponent.DiaryFound("PulpitsSpawningGameSystem")) return;
 
-        if (transform.childCount == 1)
+        if (!updateLock)
         {
-            // var pulpitsObject = Instantiate(
-            //             gameObject, transform.position, Quaternion.identity
-            //         );
-            // var randomPosition = new Vector3(
-            //   Random.Range(minPosition.y, maxPosition.y),
-            //   Random.Range(minPosition.z, maxPosition.z),
-            //   Random.Range(minPosition.x, maxPosition.x)
-            // );
+            updateLock = true;
+            var spawnTime = diaryComponent.diaryData.pulpitData.pulpitSpawnTime;
+            Debug.Log(spawnTime);
+            InvokeRepeating("Spawn", 0, (float)spawnTime);
         }
     }
 }
