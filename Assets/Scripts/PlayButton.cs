@@ -12,8 +12,5 @@ public class PlayButton : MonoBehaviour
         play.onClick.AddListener(MoveToGame);
     }
 
-    void MoveToGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+    void MoveToGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 }

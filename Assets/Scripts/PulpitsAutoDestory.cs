@@ -19,10 +19,7 @@ public class PulpitsAutoDestory : MonoBehaviour
             enabled = true;
     }
 
-    void Start()
-    {
-        diaryComponent = gameSystem.GetComponent<DoofusDiaryDataComponent>();
-    }
+    void Start() => diaryComponent = gameSystem.GetComponent<DoofusDiaryDataComponent>();
 
     void Die()
     {
