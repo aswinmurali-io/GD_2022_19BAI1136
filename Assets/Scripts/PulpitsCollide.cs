@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class PulpitsCollide : MonoBehaviour
 {
-    public GameObject doofus;
+    [SerializeField]
+    private DoofusScore doofusScore;
 
-    void OnTriggerEnter(Collider col)
+    private void OnTriggerEnter(Collider col)
     {
-        doofus.GetComponent<DoofusScore>().pulpitsVisitedIds.Add(gameObject.GetInstanceID());
+        doofusScore.pulpitsVisitedIds.Add(gameObject.GetInstanceID());
         Debug.Log(true);
     }
 }

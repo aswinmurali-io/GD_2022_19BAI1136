@@ -4,13 +4,10 @@ using UnityEngine.UI;
 
 public class PlayButton : MonoBehaviour
 {
-    public Button yourButton;
+    [SerializeField]
+    private Button button;
 
-    void Start()
-    {
-        var play = yourButton.GetComponent<Button>();
-        play.onClick.AddListener(MoveToGame);
-    }
+    void Start() => button.onClick.AddListener(MoveToGame);
 
     void MoveToGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 }

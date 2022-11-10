@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class DoofusLose : MonoBehaviour
 {
-    void Update()
+    private void Update()
     {
         if (gameObject.transform.position.y < -3)
         {

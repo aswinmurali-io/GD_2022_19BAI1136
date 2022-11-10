@@ -5,22 +5,21 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class DoofusDiaryReceiver : MonoBehaviour
+[RequireComponent(typeof(DoofusDiaryDataComponent))]
+public class DoofusDiaryReceiver: MonoBehaviour
 {
+    [SerializeField]
+    private DoofusDiaryDataComponent doofusDiaryDataComponent;
+
     private string url = "https://s3.ap-south-1.amazonaws.com/superstars.assetbundles.testbuild/doofus_game/doofus_diary.json";
 
-    private DoofusDiaryDataComponent diaryComponent;
-
-    void Start()
-    {
-        Debug.Log("Getting Doofus diary data from server...");
-        StartCoroutine(GetDataFromServer());
-        diaryComponent = GetComponent<DoofusDiaryDataComponent>();
-    }
+    private void Start() => StartCoroutine(GetDataFromServer());
 
     // DoofusDiaryData
-    IEnumerator GetDataFromServer()
+    private IEnumerator GetDataFromServer()
     {
+        Debug.Log("Getting Doofus diary data from server...");
+
         using (var request = UnityWebRequest.Get(url))
         {
             yield return request.SendWebRequest();
@@ -41,10 +40,10 @@ public class DoofusDiaryReceiver : MonoBehaviour
 
                 var diaryData = JsonConvert.DeserializeObject<DoofusDiaryData>(jsonString);
 
-                diaryComponent.diaryData = diaryData;
-
-                Debug.Log(diaryData);
+                doofusDiaryDataComponent.EnableWithData(diaryData);
             }
         }
+
+        yield return null;
     }
 }

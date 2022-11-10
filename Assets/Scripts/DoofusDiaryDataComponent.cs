@@ -1,18 +1,27 @@
-using System;
 using UnityEngine;
 
-public class DoofusDiaryDataComponent : MonoBehaviour
+interface IDataComponent<T>
 {
-    public DoofusDiaryData diaryData;
+    void EnableWithData(T data);
+}
 
-    public bool DiaryFound(string dependentComponentName)
+public class DoofusDiaryDataComponent : MonoBehaviour, IDataComponent<DoofusDiaryData>
+{
+    public static DoofusDiaryData data { get; private set; }
+
+    [SerializeField]
+    private DoofusMovement doofusMovement;
+
+    [SerializeField]
+    private PulpitsSpawningGameSystem pulpitsSpawningGameSystem;
+
+    public void EnableWithData(DoofusDiaryData data)
     {
-        if (diaryData == null)
-        {
-            Debug.Log(String.Format(@"Diary yet to be found! {0}
-            component is waiting for data from server...", dependentComponentName));
-            return false;
-        }
-        return true;
+        Debug.Log(data);
+
+        DoofusDiaryDataComponent.data = data;
+
+        pulpitsSpawningGameSystem.enabled = true;
+        doofusMovement.enabled = true;
     }
 }

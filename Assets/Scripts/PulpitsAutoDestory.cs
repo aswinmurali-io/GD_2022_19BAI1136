@@ -3,46 +3,24 @@ using UnityEngine;
 
 public class PulpitsAutoDestory : MonoBehaviour
 {
-    public GameObject gameSystem;
+    [SerializeField]
+    private TextMeshPro timerText;
 
-    public TextMeshPro timerText;
+    [SerializeField]
+    private DoofusScore doofusScore;
 
-    private DoofusDiaryDataComponent diaryComponent;
-
-    public GameObject doofusGameObject;
-
-    private bool messageLock = false;
-
-    void Awake()
+    private void Start()
     {
-        if (gameObject.name != "Pulpit")
-            enabled = true;
+        var pulpitData = DoofusDiaryDataComponent.data.pulpitData;
+        var randomDestroyTime = Random.Range((float)pulpitData.minDestroyTime, (float)pulpitData.maxDestroyTime);
+
+        Debug.Log($"Pulpits ({gameObject.GetInstanceID()}) has destroy time set to {randomDestroyTime} seconds");
+        Invoke("Die", randomDestroyTime);
     }
 
-    void Start() => diaryComponent = gameSystem.GetComponent<DoofusDiaryDataComponent>();
-
-    void Die()
+    private void Die()
     {
-        Destroy(gameObject);
-        enabled = false;
-
-        doofusGameObject.GetComponent<DoofusScore>().score += 1;
-    }
-
-    void Update()
-    {
-        if (!diaryComponent.DiaryFound("PulpitsAutoDestory")) return;
-
-        var minDestroyTime = diaryComponent.diaryData.pulpitData.minPulpitDestroyTime;
-        var maxDestroyTime = diaryComponent.diaryData.pulpitData.maxPulpitDestroyTime;
-
-        var randomDestroyTime = Random.Range((float)minDestroyTime, (float)maxDestroyTime);
-
-        if (!messageLock)
-        {
-            Debug.Log(System.String.Format("Pulpits ({0}) has destroy time set to {1} seconds", this.gameObject.GetInstanceID(), randomDestroyTime));
-            Invoke("Die", randomDestroyTime);
-            messageLock = true;
-        }
+        gameObject.SetActive(false);
+        doofusScore.score += 1;
     }
 }

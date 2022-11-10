@@ -8,12 +8,12 @@ public class PlayerData
 public class PulpitData
 {
     [JsonProperty(PropertyName = "min_pulpit_destroy_time")]
-    public int minPulpitDestroyTime;
+    public int minDestroyTime;
     [JsonProperty(PropertyName = "max_pulpit_destroy_time")]
-    public int maxPulpitDestroyTime;
+    public int maxDestroyTime;
 
     [JsonProperty(PropertyName = "pulpit_spawn_time")]
-    public double pulpitSpawnTime;
+    public double spawnTime;
 }
 
 public class DoofusDiaryData
