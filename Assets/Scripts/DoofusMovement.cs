@@ -15,7 +15,7 @@ public class DoofusMovement : MonoBehaviour
 
         if (move != Vector3.zero)
         {
-            var speed = DoofusDiaryDataComponent.data.playerData.speed;
+            var speed = DoofusDiaryDataComponent.data.playerData.speed * 3;
             controller.Move(move * Time.deltaTime * speed);
         }
     }

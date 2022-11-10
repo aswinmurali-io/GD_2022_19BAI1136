@@ -17,7 +17,7 @@ public class PulpitsSpawningGameSystem : MonoBehaviour
                 var pickedPointIndex = random.Next(spawnPoints.Length);
 
                 spawnPoints[pickedPointIndex].SetActive(true);
-                
+                return;
             }
         }
     }

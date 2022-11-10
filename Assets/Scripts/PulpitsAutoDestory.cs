@@ -9,18 +9,31 @@ public class PulpitsAutoDestory : MonoBehaviour
     [SerializeField]
     private DoofusScore doofusScore;
 
-    private void Start()
-    {
-        var pulpitData = DoofusDiaryDataComponent.data.pulpitData;
-        var randomDestroyTime = Random.Range((float)pulpitData.minDestroyTime, (float)pulpitData.maxDestroyTime);
+    private bool lockUpdate;
 
-        Debug.Log($"Pulpits ({gameObject.GetInstanceID()}) has destroy time set to {randomDestroyTime} seconds");
-        Invoke("Die", randomDestroyTime);
+    private void OnEnable()
+    {
+        lockUpdate = false;
     }
 
     private void Die()
     {
         gameObject.SetActive(false);
         doofusScore.score += 1;
+    }
+
+    private void Update()
+    {
+        if (DoofusDiaryDataComponent.data == null) return;
+
+        if (!lockUpdate)
+        {
+            lockUpdate = true;
+            var pulpitData = DoofusDiaryDataComponent.data.pulpitData;
+            var randomDestroyTime = Random.Range((float)pulpitData.minDestroyTime, (float)pulpitData.maxDestroyTime);
+
+            Debug.Log($"Pulpits ({gameObject.GetInstanceID()}) has destroy time set to {randomDestroyTime} seconds");
+            Invoke("Die", randomDestroyTime);
+        }
     }
 }
