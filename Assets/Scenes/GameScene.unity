@@ -506,6 +506,10 @@ PrefabInstance:
       propertyPath: doofusScore
       value: 
       objectReference: {fileID: 1031664215}
+    - target: {fileID: 8486303511592790761, guid: 1d647a8720ec5c44195def3b1dfd12f2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8486303511592790763, guid: 1d647a8720ec5c44195def3b1dfd12f2, type: 3}
       propertyPath: doofusScore
       value: 
@@ -650,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7991774718673286595, guid: 12729aa081a757f42a4e937d3502bec6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.68
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 7991774718673286595, guid: 12729aa081a757f42a4e937d3502bec6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -687,6 +691,10 @@ PrefabInstance:
     - target: {fileID: 7991774718673286599, guid: 12729aa081a757f42a4e937d3502bec6, type: 3}
       propertyPath: m_Name
       value: Doofus
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991774718673286599, guid: 12729aa081a757f42a4e937d3502bec6, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12729aa081a757f42a4e937d3502bec6, type: 3}

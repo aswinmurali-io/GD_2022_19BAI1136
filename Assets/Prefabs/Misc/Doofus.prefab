@@ -102,9 +102,10 @@ GameObject:
   - component: {fileID: 7991774718673286592}
   - component: {fileID: 7991774718673286607}
   - component: {fileID: 7991774718673286606}
+  - component: {fileID: 6506215916420701851}
   m_Layer: 0
   m_Name: Doofus
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +184,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7991774718673286599}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -225,9 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749a2b05202ab8a4e9ae7afea339afcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pulpitsVisitedIds: 
-  score: 0
   scoreText: {fileID: 7991774718890309336}
+  score: 0
 --- !u!54 &7991774718673286607
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -262,6 +262,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6506215916420701851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7991774718673286599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1b5607ad6e62547bf65c9835fb0b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doofusScore: {fileID: 7991774718673286592}
 --- !u!1 &7991774718890309338
 GameObject:
   m_ObjectHideFlags: 0

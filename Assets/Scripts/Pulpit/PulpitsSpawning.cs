@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PulpitsSpawningGameSystem : MonoBehaviour
+public class PulpitsSpawning : MonoBehaviour
 {
     private bool updateLock = false;
 

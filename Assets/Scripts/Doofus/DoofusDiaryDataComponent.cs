@@ -13,7 +13,7 @@ public class DoofusDiaryDataComponent : MonoBehaviour, IDataComponent<DoofusDiar
     private DoofusMovement doofusMovement;
 
     [SerializeField]
-    private PulpitsSpawningGameSystem pulpitsSpawningGameSystem;
+    private PulpitsSpawning pulpitsSpawningGameSystem;
 
     public void EnableWithData(DoofusDiaryData data)
     {

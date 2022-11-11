@@ -6,6 +6,11 @@ public class DoofusMovement : MonoBehaviour
     [SerializeField]
     private CharacterController controller;
 
+    private void Start()
+    {
+        controller.detectCollisions = true;
+    }
+
     private void Update()
     {
         var move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));

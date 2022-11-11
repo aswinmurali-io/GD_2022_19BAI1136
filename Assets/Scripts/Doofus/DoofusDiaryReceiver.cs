@@ -18,7 +18,7 @@ public class DoofusDiaryReceiver: MonoBehaviour
     // DoofusDiaryData
     private IEnumerator GetDataFromServer()
     {
-        Debug.Log("Getting Doofus diary data from server...");
+        Debug.Log("Getting Doofus diary data from server...,");
 
         using (var request = UnityWebRequest.Get(url))
         {

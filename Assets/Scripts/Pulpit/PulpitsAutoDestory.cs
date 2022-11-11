@@ -19,7 +19,6 @@ public class PulpitsAutoDestory : MonoBehaviour
     private void Die()
     {
         gameObject.SetActive(false);
-        doofusScore.score += 1;
     }
 
     private void Update()

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5520850339382220043}
   - component: {fileID: 5520850339382220042}
-  - component: {fileID: 1883391269817721345}
   m_Layer: 0
   m_Name: Pause Menu Screen
   m_TagString: Untagged
@@ -49,27 +48,6 @@ MonoBehaviour:
   continueButton: {fileID: 5520850339991369959}
   exitButton: {fileID: 5520850339923946447}
   pauseMenuCanvas: {fileID: 5520850339505777436}
-  animator: {fileID: 7986211162737346029}
---- !u!95 &1883391269817721345
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5520850339382220040}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: efabd66aa22d4964ea34b11a187f2cf5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5520850339505777436
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,7 +61,6 @@ GameObject:
   - component: {fileID: 5520850339505777433}
   - component: {fileID: 5520850339505777438}
   - component: {fileID: 3333627307795578412}
-  - component: {fileID: 7986211162737346029}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -185,26 +162,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!95 &7986211162737346029
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5520850339505777436}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: efabd66aa22d4964ea34b11a187f2cf5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5520850339917401701
 GameObject:
   m_ObjectHideFlags: 0
