@@ -1,6 +1,6 @@
 using UnityEngine;
 
-interface IDataComponent<T>
+public interface IDataComponent<T>
 {
     void EnableWithData(T data);
 }
@@ -10,7 +10,7 @@ public class DoofusDiaryDataComponent : MonoBehaviour, IDataComponent<DoofusDiar
     public static DoofusDiaryData data { get; private set; }
 
     [SerializeField]
-    private DoofusMovement doofusMovement;
+    private DoofusCharacterController doofusMovement;
 
     [SerializeField]
     private PulpitsSpawning pulpitsSpawningGameSystem;

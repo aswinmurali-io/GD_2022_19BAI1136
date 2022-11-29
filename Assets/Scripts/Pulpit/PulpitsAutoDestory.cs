@@ -7,7 +7,7 @@ public class PulpitsAutoDestory : MonoBehaviour
     private TextMeshPro timerText;
 
     [SerializeField]
-    private DoofusScore doofusScore;
+    private DoofusScoreComponent doofusScore;
 
     private bool lockUpdate;
 

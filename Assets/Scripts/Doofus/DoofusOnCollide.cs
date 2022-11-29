@@ -1,9 +1,10 @@
 using UnityEngine;
+using Zenject;
 
 public class DoofusOnCollide : MonoBehaviour
 {
-    [SerializeField]
-    private DoofusScore doofusScore;
+    [Inject]
+    private IDoofusScore doofusScore;
 
     private int previousPulpitId = -1;
 
@@ -12,7 +13,7 @@ public class DoofusOnCollide : MonoBehaviour
         if (hit.gameObject.tag == "Pulpits" && previousPulpitId != hit.gameObject.GetInstanceID())
         {
             previousPulpitId = hit.gameObject.GetInstanceID();
-            doofusScore.score++;
+            doofusScore.IncrementScore();
         }
     }
 }
